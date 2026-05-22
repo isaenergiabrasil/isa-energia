@@ -46,19 +46,20 @@
             font-weight: 300;
         }
 
-        /* MENU LATERAL ESPAÇADO POR TODA A TELA */
+                /* MENU LATERAL AJUSTADO */
         .setores-lateral {
             position: fixed;
             top: 5vh;
             left: 30px;
-            width: 320px; /* Largura levemente maior para acomodar melhor os links */
-            height: 90vh; /* Ocupa 90% da altura total da tela */
+            width: 320px; 
+            height: auto; /* ALTERADO: De 90vh para auto (não estica mais na tela) */
             display: flex;
             flex-direction: column; 
-            justify-content: space-between; /* Distribui os botões igualmente de cima a baixo */
-            gap: 20px; 
+            justify-content: flex-start; /* ALTERADO: Alinha os blocos um logo abaixo do outro */
+            gap: 15px; /* Diminui um pouco o espaço entre um quadro e outro */
             z-index: 9999;
         }
+
 
         /* Caixa de cada Setor */
         .setor-card {

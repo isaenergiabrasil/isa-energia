@@ -2,7 +2,6 @@
 <html lang="pt-BR">
 <head>
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SITES Isa Energia Brasil</title>
@@ -17,8 +16,8 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            height: 100vh;
-            overflow: hidden; /* Evita barras de rolagem desnecessárias na tela principal */
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* TÍTULO CENTRALIZADO E MAIOR */
@@ -169,6 +168,81 @@
             padding: 6px 15px;
             border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            z-index: 10000;
+        }
+
+        /* 📱 REGRAS EXCLUSIVAS PARA CELULAR (TELAS PEQUENAS) */
+        @media (max-width: 768px) {
+            body {
+                overflow-y: auto; /* Permite rolar a página para baixo */
+            }
+
+            .topo-titulo {
+                position: relative;
+                top: 0;
+                left: 0;
+                transform: none;
+                width: 90%;
+                margin: 30px auto;
+                pointer-events: auto;
+            }
+
+            h1 {
+                font-size: 32px; /* Diminui o título principal no celular */
+            }
+
+            .section-title {
+                font-size: 16px; /* Diminui o subtítulo */
+            }
+
+            .setores-lateral {
+                position: relative;
+                top: 0;
+                left: 0;
+                width: 90%;
+                height: auto;
+                margin: 0 auto 100px auto; /* Dá espaço para não cobrir o rodapé */
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            /* No celular, os blocos já ficam abertos por padrão para facilitar o toque */
+            .setor-card {
+                flex-grow: unset;
+                height: auto;
+            }
+
+            .setor-titulo {
+                height: auto;
+                padding: 15px;
+                background: #f1f7ff;
+                color: #0056b3;
+                border-bottom: 1px solid #ddd;
+            }
+
+            .setor-conteudo {
+                max-height: none !important;
+                opacity: 1 !important;
+                visibility: visible !important;
+                padding: 15px;
+            }
+
+            .setor-conteudo a {
+                padding: 12px; /* Botões maiores para facilitar o clique com o dedo */
+                font-size: 14px;
+            }
+
+            footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border-radius: 0;
+                text-align: center;
+                padding: 10px;
+                background: rgba(255, 255, 255, 0.95);
+            }
         }
     </style>
 </head>
@@ -194,6 +268,8 @@
                 <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/44bfc91a-b39d-47eb-a5e3-d172b6bf4723/b72458d24671e35260e2?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Matriz de Saúde</a>
             </div>
         </div>
+
+
 
         <!-- SETOR 2 -->
         <div class="setor-card">

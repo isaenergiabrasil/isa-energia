@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SITES Isa Energia Brasil</title>
+    <style>
+        body {
+            background-image: url('https://arevista.com.br/wp-content/uploads/2026/02/ISA-Energia-ISAE4-vai-dar-ruim-Divida-sobe-dividendos-recuam-e-mercado-projeta-virada-ate-2028-1024x683.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-color: #f4f4f4; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden; /* Evita barras de rolagem desnecessárias na tela principal */
+        }
+
+        /* TÍTULO CENTRALIZADO E MAIOR */
+        .topo-titulo {
+            position: absolute;
+            top: 8%;
+            left: 55%; /* Deslocado um pouco para a direita para equilibrar com o menu lateral */
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 50%;
+            pointer-events: none; /* Garante que o texto não atrapalhe cliques no fundo */
+        }
+
+        h1 {
+            color: white;
+            font-size: 52px; /* Fonte significativamente maior */
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9), 0 0 20px rgba(0, 0, 0, 0.4);
+            margin: 0 0 10px 0;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            color: #f0f0f0;
+            font-size: 24px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            font-weight: 300;
+        }
+
+        /* MENU LATERAL ESPAÇADO POR TODA A TELA */
+        .setores-lateral {
+            position: fixed;
+            top: 5vh;
+            left: 30px;
+            width: 320px; /* Largura levemente maior para acomodar melhor os links */
+            height: 90vh; /* Ocupa 90% da altura total da tela */
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-between; /* Distribui os botões igualmente de cima a baixo */
+            gap: 20px; 
+            z-index: 9999;
+        }
+
+        /* Caixa de cada Setor */
+        .setor-card {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            border-left: 6px solid #007bff;
+            
+            /* Faz com que os botões dividam o espaço vertical disponível igualmente */
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Centraliza o conteúdo verticalmente antes de abrir */
+        }
+
+        /* Título do Setor */
+        .setor-titulo {
+            padding: 15px 20px;
+            margin: 0;
+            font-size: 16px;
+            color: #111;
+            font-weight: bold;
+            cursor: pointer;
+            background: #ffffff;
+            transition: all 0.3s;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            height: 100%; /* Ocupa o bloco todo enquanto fechado */
+        }
+
+        /* Container de links recolhido */
+        .setor-conteudo {
+            max-height: 0;
+            opacity: 0;
+            visibility: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding: 0 15px;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            overflow-y: auto; /* Permite rolagem dentro do botão se houver muitos links */
+        }
+
+        /* Suavização da rolagem interna dos botões */
+        .setor-conteudo::-webkit-scrollbar {
+            width: 4px;
+        }
+        .setor-conteudo::-webkit-scrollbar-thumb {
+            background: rgba(0,123,255,0.3);
+            border-radius: 4px;
+        }
+
+        /* === HOVER LATERAL (EXPANSÃO CENTRALIZADA) === */
+        .setor-card:hover {
+            flex-grow: 3; /* Faz o botão focado "roubar" espaço dos outros para cima e para baixo */
+            transform: scale(1.02) translateX(5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.4);
+            border-left-color: #0056b3;
+            background: #ffffff;
+        }
+
+        .setor-card:hover .setor-titulo {
+            background: #f1f7ff;
+            color: #0056b3;
+            height: auto; /* Libera o tamanho fixo para dar espaço aos links */
+            padding-bottom: 10px;
+        }
+
+        .setor-card:hover .setor-conteudo {
+            max-height: 60vh; /* Abre espaço suficiente para os links */
+            opacity: 1;
+            visibility: visible;
+            padding-bottom: 15px;
+        }
+
+        /* Links internos */
+        .setor-conteudo a {
+            display: block;
+            padding: 9px 12px;
+            background-color: #f8f9fa;
+            color: #444;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 12px;
+            border-radius: 6px;
+            border-left: 3px solid #eee;
+            transition: all 0.2s ease;
+            text-align: left;
+        }
+
+        .setor-conteudo a:hover {
+            background-color: #007bff;
+            color: #ffffff;
+            border-left-color: #003b80;
+            padding-left: 18px;
+        }
+
+        /* Rodapé posicionado discretamente no canto inferior direito */
+        footer {
+            position: fixed;
+            bottom: 15px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 6px 15px;
+            border-radius: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+   
+    <!-- Título Centralizado na Página -->
+    <div class="topo-titulo">
+        <h1>SITES Isa Energia Brasil</h1>
+        <div class="section-title">Otimização do Processo das Equipes de Operação e Manutenção</div>
+    </div>
+    
+    <!-- Menu Lateral esticado de cima a baixo -->
+    <div class="setores-lateral">
+
+        <!-- SETOR 1 -->
+        <div class="setor-card">
+            <div class="setor-titulo">⚡ Indicadores da Operação e Manutenção</div>
+            <div class="setor-conteudo">
+                <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/b3d0ff7c-f7b7-411c-83ec-8a9e92917635/8fdeedf4827aea1e669e?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Indicador de Qualidade da Manutenção</a>
+                <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/1e40b86f-de62-4e0f-b7e2-2aded18beddf/95b4a457491552a9eb02?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Indicadores Diretoria de Operações</a>
+                <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/cb45e067-077d-4996-898c-bebc8d23ba01/d5fedc4b296360e27fd2?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Matriz de Condição</a>
+                <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/cb45e067-077d-4996-898c-bebc8d23ba01/8ae878da0ae6bc4f975a?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Matriz de Condição Indicadores IQM</a>
+                <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/44bfc91a-b39d-47eb-a5e3-d172b6bf4723/b72458d24671e35260e2?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Matriz de Saúde</a>
+            </div>
+        </div>
+
+        <!-- SETOR 2 -->
+        <div class="setor-card">
+            <div class="setor-titulo">⚡ Manutenções (014)</div>
+            <div class="setor-conteudo">
+                <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/28a0007e-8331-4b95-aa02-f144026be646?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Manutenções Com Desligamento</a>
+                <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/d8fa83f4-c9c0-4e0b-b4f8-b59f1d43767b/ReportSectionf424f4eae5121e5f46b6?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Manutenções Sem Desligamento</a>
+                <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/a42b6216-3586-4ad2-9d59-508cc0eda805/ReportSectionf424f4eae5121e5f46b6?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Manutenções TCs e TPs</a>
+                <a href="https://planner.cloud.microsoft/webui/plan/X9G6UfOnW0GpPyBvvYjbG2QAB0WM/view/board?tid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc" target="_blank">Planner Getulina</a>
+            </div>
+        </div>
+
+        <!-- SETOR 3 -->
+        <div class="setor-card">
+            <div class="setor-titulo">⚡ Portais e Guias</div>
+            <div class="setor-conteudo">
+                <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_Orienta%C3%A7%C3%B5es.aspx/" target="_blank">Portal de Documentos</a>
+                <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_AMT.aspx/" target="_blank">Guias AMTs</a>
+                <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_Bateria_Retificador.aspx/" target="_blank">Guias Baterias / Retificadores</a>
+                <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_Detector_Tens%C3%A3o.aspx/" target="_blank">Guias Detectores de Tensão</a>
+                <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_Disjuntor.aspx/" target="_blank">Guias Disjuntores</a>
+                <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_G.A.E.aspx/" target="_blank">Guias GAE</a>
+                <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_ParaRaio.aspx/" target="_blank">Guias Para Raios</a>
+                <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_Seccionador.aspx/" target="_blank">Guias Seccionadores</a>
+                <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_Sincronizador.aspx/" target="_blank">Guias Sincronizadores</a>
+                <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_Trafo.aspx/" target="_blank">Guias Transformadores / Reatores</a>
+                <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_Transformador_Reator.aspx/" target="_blank">Guias TC e TP</a>
+            </div>
+        </div>
+
+        <!-- SETOR 4 -->
+        <div class="setor-card">
+            <div class="setor-titulo">⚡ Sistemas e Rotinas</div>
+            <div class="setor-conteudo">
+                <a href="https://erpdistrinox.com.br/Default.aspx/" target="_blank">Distrinox EPIs</a>
+                <a href="http://transnetprd/negocio/avaliacao-da-operacao-e-protecao/Paginas/parcela-variavel.aspx/" target="_blank">Parcela Variável</a>
+                <a href="http://bojwinpvsapep.isacteep.local:50000/irj/portal/" target="_blank">Ponto Eletrônico</a>
+                <a href="https://apps.powerapps.com/play/e/default-c980e410-0b5c-48bc-bd1a-8b91cabc84bc/a/9f9a34ec-8477-4c97-ba48-9f54fae83f39?tenantId=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&source=portal/" target="_blank">PowerAPPs DDS e DSS</a>
+                <a href="https://bojwinpvpapp/wiki/doku.php?id=protecao:tabela_ansi/" target="_blank">Tabela ANSI</a>
+                <a href="https://bojwinpvpapp/wiki/doku.php?id=start/" target="_blank">Wikipédia da Proteção</a>
+                <a href="http://www.google.com/" target="_blank">Google</a>
+            </div>
+        </div>
+
+        <!-- SETOR 5 (Futuro) -->
+        <div class="setor-card">
+            <div class="setor-titulo">⚡ Dia a Dia da Operação</div>
+            <div class="setor-conteudo">
+                <a href="https://gst.isacteep.com.br/#/login/" target="_blank">GST Login</a>
+                <a href="http://bomj-lx.cteep.com.br/npio/" target="_blank">NOVO Pio</a>
+                <a href="http://sisconweb:8084/home/CaixaEntrada.aspx/" target="_blank">SISCON WEB</a>
+                <a href="http://simulador/login/" target="_blank">Simulador STL</a> 
+                <a href="http://transnetprd/Paginas/default.aspx/" target="_blank">Transnet</a>     
+                <a href="https://cteep.zaccx.com.br/login/" target="_blank">ZACCX</a>       
+        </div>
+
+    </div>
+
+    <footer>
+        <a href="#" style="font-size: 13px; font-weight: bold; color: #333; text-decoration: none;">
+            © Julian Rocha Rosseto
+        </a>
+    </footer>
+
+</body>
+</html>

@@ -171,11 +171,16 @@
             z-index: 10000;
         }
 
-        /* 📱 REGRAS EXCLUSIVAS PARA CELULAR (TELAS PEQUENAS) */
+                /* 📱 REGRAS EXCLUSIVAS PARA CELULAR (TELAS PEQUENAS) */
         @media (max-width: 768px) {
             body {
-                overflow-y: auto; /* Permite rolar a página para baixo */
+                background-size: contain; /* Ajusta a imagem inteira na largura do celular */
+                background-position: top center; /* Posiciona a imagem no topo da tela */
+                background-attachment: scroll; /* Melhora o desempenho da rolagem no celular */
+                background-color: #0b1c3a; /* Cor azul escura corporativa para preencher o resto do fundo */
+                overflow-y: auto;
             }
+
 
             .topo-titulo {
                 position: relative;

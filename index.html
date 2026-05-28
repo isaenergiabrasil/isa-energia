@@ -26,15 +26,16 @@
             background: rgba(0, 0, 0, 0.4);
             z-index: -1;
         }
+
         .header {
-    display: flex;
-    flex-direction: row-reverse; /* título à direita, menu à esquerda */
-    align-items: center;         /* centraliza verticalmente */
-    justify-content: space-between;
-    min-height: 100vh;           /* ocupa a altura toda da tela */
-    padding: 20px;
-}
-       
+            display: flex;
+            flex-direction: row-reverse; /* título à direita, menu à esquerda */
+            align-items: center;         /* centraliza verticalmente */
+            justify-content: space-between;
+            min-height: 100vh;           /* ocupa a altura toda da tela */
+            padding: 20px;
+        }
+
         .titulo {
             flex: 1;
             text-align: right;
@@ -159,9 +160,10 @@
     </style>
 </head>
 <body>
-
-    <div class="setores-lateral">
-        <div class="setor-card">
+    <div class="header">
+        <!-- Menu à esquerda -->
+        <div class="setores-lateral">
+            <div class="setor-card">
             <div class="setor-titulo">⚡ Indicadores da Operação e Manutenção</div>
             <div class="setor-conteudo">
                 <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/b3d0ff7c-f7b7-411c-83ec-8a9e92917635/8fdeedf4827aea1e669e?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Indicador de Qualidade da Manutenção</a>
@@ -234,13 +236,7 @@
                 <a href="http://transnetprd/Paginas/default.aspx/" target="_blank">Transnet</a>     
                 <a href="https://cteep.zaccx.com.br/login/" target="_blank">ZACCX</a>       
         </div>
-
-    <div class="header">
-        <!-- Menu à esquerda -->
-        <div class="setores-lateral">
-        </div>
-
-        <!-- Título e subtítulo à direita -->
+  <!-- Título e subtítulo à direita -->
         <div class="titulo">
             <h1>SITES Isa Energia Brasil</h1>
             <p>Otimização do Processo das Equipes de Operação e Manutenção</p>
@@ -252,3 +248,4 @@
     </footer>
 </body>
 </html>
+    

@@ -6,19 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SITES Isa Energia Brasil</title>
     <style>
-        body {
-            background-image: url('Screenshot_20260527_205140_Chrome.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
+        
+body {
+    background-image: url('horizontal_pro.png'); /* desktop padrão */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
         body::before {
             content: "";
             position: fixed;
@@ -130,33 +130,39 @@
         }
 
         @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                text-align: center;
-            }
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
 
-            .titulo {
-                text-align: center;
-                margin-bottom: 20px;
-            }
+    .titulo {
+        text-align: center;
+        margin-bottom: 20px;
+    }
 
-            .setores-lateral {
-                width: 95%;
-                margin: 0 auto;
-                gap: 15px;
-            }
+    .setores-lateral {
+        width: 95%;
+        margin: 0 auto;
+        gap: 15px;
+    }
 
-            footer {
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                border-radius: 0;
-                text-align: center;
-                padding: 10px;
-                background: rgba(255, 255, 255, 0.95);
-            }
-        }
+    footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        border-radius: 0;
+        text-align: center;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.95);
+    }
+
+    /* ✅ ADICIONE ISSO AQUI */
+    body {
+        background-image: url('vertical_pro.png');
+        background-attachment: scroll;
+    }
+}
     </style>
 </head>
 

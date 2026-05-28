@@ -27,14 +27,14 @@
             z-index: -1;
         }
 
-        .header {
-            display: flex;
-            flex-direction: row-reverse; /* título à direita, menu à esquerda */
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px;
-        }
-
+.header {
+    display: flex;
+    flex-direction: row-reverse; /* título à direita, menu à esquerda */
+    align-items: center;         /* centraliza verticalmente */
+    justify-content: space-between;
+    padding: 20px;
+    min-height: 80vh;            /* altura mínima para centralizar melhor */
+}
         .titulo {
             flex: 1;
             text-align: right;

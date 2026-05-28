@@ -29,37 +29,45 @@
         }
 
         .header {
-  display: flex;
-  flex-direction: row-reverse; /* inverte a ordem: título à direita */
-  align-items: center;
-  background: transparent;     /* remove fundo branco */
-  padding: 20px;
-}
+            display: flex;
+            flex-direction: row-reverse; /* título à direita, menu à esquerda */
+            align-items: center;
+            flex-wrap: wrap;
+            background: transparent;
+            padding: 20px;
+        }
 
-.header h1 {
-  margin: 0;
-  margin-left: 40px;           /* espaço entre título e botões */
-  color: #ffd700;
-}
+        .titulo {
+            text-align: right;
+            color: #fff;
+            flex: 1;
+        }
+
+        .titulo h1 {
+            margin: 0;
+            color: #ffd700;
+        }
+
+        .titulo p {
+            margin: 5px 0 0 0;
+            font-size: 16px;
+            color: #ccc;
+        }
 
         /* Menu lateral */
         .setores-lateral {
-            position: fixed;
-            top: 12vh;
-            left: 30px;
             width: 320px; 
             display: flex;
             flex-direction: column; 
             gap: 20px;
-            z-index: 9999;
         }
 
         .setor-card {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(30, 58, 112, 0.9); /* azul escuro translúcido */
             border-radius: 12px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.25);
             transition: all 0.4s;
-            border-left: 6px solid #007bff;
+            border-left: 6px solid #ffd700; /* destaque amarelo */
             flex-grow: 1; 
             display: flex;
             flex-direction: column;
@@ -69,10 +77,10 @@
         .setor-titulo {
             padding: 15px 20px;
             font-size: 16px;
-            color: #111;
+            color: #fff;
             font-weight: bold;
             cursor: pointer;
-            background: #ffffff;
+            background: transparent; /* remove fundo branco */
             text-align: left;
         }
 
@@ -97,19 +105,19 @@
         .setor-conteudo a {
             display: block;
             padding: 9px 12px;
-            background-color: #f8f9fa;
-            color: #444;
+            background-color: #1e3a70;
+            color: #fff;
             text-decoration: none;
             font-weight: 500;
             font-size: 12px;
             border-radius: 6px;
-            border-left: 3px solid #eee;
+            border-left: 3px solid #003b80;
         }
 
         .setor-conteudo a:hover {
-            background-color: #007bff;
-            color: #ffffff;
-            border-left-color: #003b80;
+            background-color: #ffd700;
+            color: #111;
+            border-left-color: #ffa500;
             padding-left: 18px;
         }
 
@@ -126,39 +134,19 @@
 
         /* Ajustes para celular */
         @media (max-width: 768px) {
-            body {
-                background-image: url('Screenshot_20260527_205140_Chrome.jpg');
-                background-size: contain;
-                background-position: center center;
-                background-repeat: no-repeat;
-                background-attachment: scroll;
-            }
-
-            body::before {
-                background: rgba(0, 0, 0, 0.3);
-            }
-
-            .topo-titulo {
-                width: 95%;
-                margin: 20px auto;
+            .header {
+                flex-direction: column;
                 text-align: center;
-                background: rgba(255, 255, 255, 0.85);
-                padding: 15px;
-                border-radius: 8px;
             }
 
-            h1 {
-                font-size: 28px;
-            }
-
-            .section-title {
-                font-size: 16px;
+            .titulo {
+                text-align: center;
+                margin-bottom: 20px;
             }
 
             .setores-lateral {
-                position: relative;
                 width: 95%;
-                margin: 0 auto 100px auto;
+                margin: 0 auto;
                 gap: 15px;
             }
 

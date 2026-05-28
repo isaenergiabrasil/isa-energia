@@ -28,12 +28,12 @@
         }
 
         .header {
-            display: flex;
-            flex-direction: row; /* título à direita, menu à esquerda */
-            align-items: center;         /* centraliza verticalmente */
-            justify-content: space-between;
-            min-height: 100vh;           /* ocupa a altura toda da tela */
-            padding: 20px;
+             display: flex;
+             flex-direction: row; /* menu à esquerda, título à direita */
+             align-items: flex-start; /* começa mais próximo do topo */
+             justify-content: space-between;
+             min-height: calc(100vh - 60px); /* reduz a altura total */
+             padding: 60px 20px 20px 20px;   /* margem superior de 60px */
         }
 
         .titulo {

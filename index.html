@@ -8,18 +8,21 @@
     <style>
         body {
             background-image: url('Screenshot_20260527_205140_Chrome.jpg');
-            background-size: cover;
+            background-size: cover; /* ajusta para preencher a tela */
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-color: #f4f4f4; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+}
 
+         body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.6); /* véu claro sobre a imagem */
+    z-index: -1;
+
+}
+        
         /* TÍTULO CENTRALIZADO E MAIOR */
         .topo-titulo {
             position: absolute;
@@ -173,20 +176,14 @@
         }
 
                 /* 📱 REGRAS EXCLUSIVAS PARA CELULAR (TELAS PEQUENAS) */
-        @media (max-width: 768px) {
-                   body {
-            background-image: url('https://arevista.com.br');
-            background-size: cover;
-            background-position: center center; /* Centraliza perfeitamente nos dois dispositivos */
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-color: #f4f4f4; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
+        @media (max-width: 768px) 
+                 body {
+                 background-image: url('fundo.jpg'); /* mesma imagem local */
+    background-size: contain; /* mostra inteira no celular */
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll; /* evita bug de rolagem */
+}
 
 
 

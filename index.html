@@ -28,27 +28,19 @@
             z-index: -1;
         }
 
-        /* Título centralizado */
-        .topo-titulo {
-            position: relative;
-            margin: 40px auto;
-            text-align: center;
-            width: 80%;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-        }
+        .header {
+  display: flex;
+  flex-direction: row-reverse; /* inverte a ordem: título à direita */
+  align-items: center;
+  background: transparent;     /* remove fundo branco */
+  padding: 20px;
+}
 
-        h1 {
-            color: #111;
-            font-size: 48px;
-            margin-bottom: 10px;
-        }
-
-        .section-title {
-            color: #333;
-            font-size: 22px;
-        }
+.header h1 {
+  margin: 0;
+  margin-left: 40px;           /* espaço entre título e botões */
+  color: #ffd700;
+}
 
         /* Menu lateral */
         .setores-lateral {

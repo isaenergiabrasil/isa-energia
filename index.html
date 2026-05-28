@@ -27,13 +27,13 @@
             z-index: -1;
         }
 
-.header {
+       .header {
     display: flex;
     flex-direction: row-reverse; /* título à direita, menu à esquerda */
     align-items: center;         /* centraliza verticalmente */
     justify-content: space-between;
+    min-height: 100vh;           /* ocupa a altura toda da tela */
     padding: 20px;
-    min-height: 80vh;            /* altura mínima para centralizar melhor */
 }
         .titulo {
             flex: 1;
@@ -159,9 +159,6 @@
     </style>
 </head>
 <body>
-    
-
-<div class="header">
 
     <div class="setores-lateral">
         <div class="setor-card">
@@ -238,6 +235,17 @@
                 <a href="https://cteep.zaccx.com.br/login/" target="_blank">ZACCX</a>       
         </div>
 
+        <body>
+    <div class="header">
+        <!-- Menu à esquerda -->
+        <div class="setores-lateral">
+            <div class="setor-card"><div class="setor-titulo">⚡ Indicadores da Operação e Manutenção</div></div>
+            <div class="setor-card"><div class="setor-titulo">⚡ Manutenções (014)</div></div>
+            <div class="setor-card"><div class="setor-titulo">⚡ Portais e Guias</div></div>
+            <div class="setor-card"><div class="setor-titulo">⚡ Sistemas e Rotinas</div></div>
+            <div class="setor-card"><div class="setor-titulo">⚡ Dia a Dia da Operação</div></div>
+        </div>
+
         <!-- Título e subtítulo à direita -->
         <div class="titulo">
             <h1>SITES Isa Energia Brasil</h1>
@@ -246,10 +254,7 @@
     </div>
 
     <footer>
-        <a href="#" style="font-size: 13px; font-weight: bold; color: #333; text-decoration: none;">
-            © Julian Rocha Rosseto
-        </a>
+        © Julian Rocha Rosseto
     </footer>
-
 </body>
 </html>

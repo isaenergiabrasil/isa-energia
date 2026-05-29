@@ -5,59 +5,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SITES Isa Energia Brasil</title>
+
     <style>
+        body {
+            background-image: url('horizontal_pro.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: #fff;
+        }
         
-body {
-    background-image: url('horizontal_pro.png'); /* desktop padrão */
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    overflow-x: hidden;
-}
         body::before {
             content: "";
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.45);
             z-index: -1;
         }
 
-        .header {
-             display: flex;
-             flex-direction: row; /* menu à esquerda, título à direita */
-             align-items: flex-start; /* começa mais próximo do topo */
-             justify-content: space-between;
-             min-height: calc(100vh - 120px); /* reduz a altura total */
-             padding: 120px 20px 20px 20px;   /* margem superior de 60px */
+        /* CONFIGURAÇÃO EM GRID: Divide a tela em 3 colunas rígidas */
+         .header {
+         display: grid;
+         grid-template-columns: 320px 1fr auto; /* última coluna pode crescer */
+         align-items: flex-start;
+         padding: 60px 40px;
+         gap: 40px;
+         box-sizing: border-box;
+         width: 100%;
+}
+
+
+        /* COLUNA DA ESQUERDA (Agrupa os 5 cartões) */
+        .setores-lateral {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        /* BLOCO CENTRAL: Organiza o título e o cartão de telefones abaixo dele */
+        .bloco-centro {
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Centraliza os elementos horizontalmente */
+            gap: 40px; /* Espaço entre o subtítulo e o cartão de telefones */
+            width: 100%;
         }
 
         .titulo {
-            flex: 1;
-            text-align: right;
-            color: #fff;
+            text-align: center;
+            margin-top: 20px;
         }
 
         .titulo h1 {
             margin: 0;
             color: #ffd700;
+            font-size: 2.4rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .titulo p {
-            margin: 5px 0 0 0;
+            margin: 12px 0 0 0;
             font-size: 16px;
             color: #ccc;
+            font-weight: 500;
         }
 
-        .setores-lateral {
-            width: 320px; 
-            display: flex;
-            flex-direction: column; 
-            gap: 20px;
+        /* CONTAINER EXCLUSIVO DO CARTÃO DE TELEFONES NO CENTRO/DIREITA */
+        .centro-direita-card {
+            width: 320px; /* Mantém o mesmo tamanho padrão de cartão dos outros */
+            align-self: flex-end; /* Move o cartão especificamente para o lado direito da coluna central */
         }
 
         .setor-card {
@@ -65,10 +89,11 @@ body {
             border-radius: 12px;
             box-shadow: 0 6px 15px rgba(0,0,0,0.25);
             border-left: 6px solid #ffd700;
-            flex-grow: 1; 
             display: flex;
             flex-direction: column;
             justify-content: center;
+            overflow: hidden;
+            width: 100%;
         }
 
         .setor-titulo {
@@ -89,11 +114,11 @@ body {
             flex-direction: column;
             gap: 5px;
             padding: 0 15px;
-            transition: all 0.4s;
+            transition: all 0.4s ease-in-out;
         }
 
         .setor-card:hover .setor-conteudo {
-            max-height: 60vh;
+            max-height: 90vh;
             opacity: 1;
             visibility: visible;
             padding-bottom: 15px;
@@ -109,6 +134,7 @@ body {
             font-size: 12px;
             border-radius: 6px;
             border-left: 3px solid #003b80;
+            transition: all 0.3s ease;
         }
 
         .setor-conteudo a:hover {
@@ -118,52 +144,98 @@ body {
             padding-left: 18px;
         }
 
+        /* ESPAÇO EM BRANCO PARA MANTER O GRID ALINHADO */
+        .coluna-vazia {
+            width: 320px;
+        }
+
         footer {
             position: fixed;
             bottom: 15px;
             right: 20px;
-            background: rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.85);
             padding: 6px 15px;
             border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             z-index: 10000;
+            color: #333;
+            font-size: 12px;
+            font-weight: bold;
         }
 
-        @media (max-width: 768px) {
-    .header {
-        flex-direction: column;
-        text-align: center;
-    }
+        /* Estilos da tabela de telefones */
+        .tabela-telefones {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+            color: #fff;
+        }
 
-    .titulo {
-        text-align: center;
-        margin-bottom: 20px;
-    }
+        .tabela-telefones th, .tabela-telefones td {
+            border: 1px solid #ffd700;
+            padding: 8px;
+            text-align: left;
+        }
 
-    .setores-lateral {
-        width: 95%;
-        margin: 0 auto;
-        gap: 15px;
-    }
+        .tabela-telefones th {
+            background-color: #1e3a70;
+            color: #ffd700;
+        }
 
-    footer {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        border-radius: 0;
-        text-align: center;
-        padding: 10px;
-        background: rgba(255, 255, 255, 0.95);
-    }
+        .tabela-telefones tr:hover {
+            background-color: rgba(255, 215, 0, 0.2);
+        }
 
-    /* ✅ ADICIONE ISSO AQUI */
-    body {
-        background-image: url('vertical_pro.png');
-        background-attachment: scroll;
-    }
+/* Cartão de Telefones Úteis */
+.setor-card.telefones {
+    transition: all 0.4s ease;
+    max-width: 320px; /* largura padrão */
 }
+
+/* Ao passar o mouse */
+.setor-card.telefones:hover {
+    max-width: 600px;   /* expande para caber mais conteúdo */
+}
+
+
+        @media (max-width: 1100px) {
+            .header {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 20px;
+                gap: 30px;
+            }
+            .bloco-centro {
+                order: -1; /* Força o título e telefones para o topo no mobile */
+                gap: 20px;
+            }
+            .centro-direita-card {
+                align-self: center; /* Centraliza no celular */
+                width: 100%;
+                max-width: 450px;
+            }
+            .setores-lateral {
+                width: 100%;
+                max-width: 450px;
+            }
+            .coluna-vazia {
+                display: none; /* Some com o espaço no celular */
+            }
+            body {
+                background-image: url('vertical_pro.png');
+            }
+            footer {
+                position: fixed;
+                bottom: 0; left: 0; right: 0;
+                border-radius: 0;
+                text-align: center;
+                padding: 10px;
+                background: rgba(255, 255, 255, 0.95);
+            }
+        }
     </style>
+
 </head>
 
 <body>
@@ -178,7 +250,6 @@ body {
                 <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/cb45e067-077d-4996-898c-bebc8d23ba01/d5fedc4b296360e27fd2?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Matriz de Condição</a>
                 <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/cb45e067-077d-4996-898c-bebc8d23ba01/8ae878da0ae6bc4f975a?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Matriz de Condição Indicadores IQM</a>
                 <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/44bfc91a-b39d-47eb-a5e3-d172b6bf4723/b72458d24671e35260e2?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Matriz de Saúde</a>
-                    <!-- links -->
                 </div>
             </div>
 
@@ -189,7 +260,6 @@ body {
                 <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/d8fa83f4-c9c0-4e0b-b4f8-b59f1d43767b/ReportSectionf424f4eae5121e5f46b6?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Manutenções Sem Desligamento</a>
                 <a href="https://app.powerbi.com/groups/me/apps/27dfe123-fb7e-461a-9902-7d8768717b87/reports/a42b6216-3586-4ad2-9d59-508cc0eda805/ReportSectionf424f4eae5121e5f46b6?ctid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc&experience=power-bi/" target="_blank">Manutenções TCs e TPs</a>
                 <a href="https://planner.cloud.microsoft/webui/plan/X9G6UfOnW0GpPyBvvYjbG2QAB0WM/view/board?tid=c980e410-0b5c-48bc-bd1a-8b91cabc84bc" target="_blank">Planner Getulina</a>
-                    <!-- links -->
                 </div>
             </div>
 
@@ -207,7 +277,6 @@ body {
                 <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_Sincronizador.aspx/" target="_blank">Guias Sincronizadores</a>
                 <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_Trafo.aspx/" target="_blank">Guias Transformadores / Reatores</a>
                 <a href="https://isaempresas.sharepoint.com/sites/PortalManutencao/SitePages/S_G_Transformador_Reator.aspx/" target="_blank">Guias TC e TP</a>
-                    <!-- links -->
                 </div>
             </div>
 
@@ -221,7 +290,6 @@ body {
                 <a href="https://bojwinpvpapp/wiki/doku.php?id=protecao:tabela_ansi/" target="_blank">Tabela ANSI</a>
                 <a href="https://bojwinpvpapp/wiki/doku.php?id=start/" target="_blank">Wikipédia da Proteção</a>
                 <a href="http://www.google.com/" target="_blank">Google</a>
-                    <!-- links -->
                 </div>
             </div>
 
@@ -235,26 +303,148 @@ body {
                 <a href="https://ia.isaenergiabrasil.com.br/" target="_blank">Inteligência Artificial (IA) ISA Energia</a>
                 <a href="http://bomj-lx.cteep.com.br/npio/" target="_blank">NOVO Pio</a>
                 <a href="https://unisysmt.service-now.com/isa?glide_sso_id=0ea61177dbf04a14088509ccd396198f" target="_blank">Portal Service Desk</a>
+                <a href="https://teams.microsoft.com/l/message/19:meeting_MDNiYmI2NDYtYTdiNy00MDQzLTkyODYtOGJiNmQ5ZjdmMDM2@thread.v2/1780076685011?context=%7B%22contextType%22%3A%22chat%22%7D"_blank">PowerDoc</a>
                 <a href="http://10.104.20.62:8098/" target="_blank">Quem é Quem</a>
                 <a href="http://sisconweb:8084/home/CaixaEntrada.aspx/" target="_blank">SISCON WEB</a>
                 <a href="http://simulador/login/" target="_blank">Simulador STL</a> 
                 <a href="http://transnetprd/Paginas/default.aspx/" target="_blank">Transnet</a>     
                 <a href="https://cteep.zaccx.com.br/login/" target="_blank">ZACCX</a>       
-                    <!-- links -->
                 </div>
             </div>
         </div>
 
-        <!-- Título e subtítulo à direita -->
         <div class="titulo">
             <h1>SITES Isa Energia Brasil</h1>
             <p>Otimização do Processo das Equipes de Operação e Manutenção</p>
         </div>
+
+<div class="setor-card">
+    <div class="setor-titulo">📞 Telefones Úteis</div>
+    <div class="setor-conteudo">
+        <table class="tabela-telefones">
+            <thead>
+                <tr>
+                    <th>Setor</th>
+                    <th>Número</th>
+                    <th>Número</th>
+                    <th>Ramal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>COT - COR</td>
+                    <td>(11) 4589-6567</td>
+                    <td>(11) 4589-6570</td>
+                    <td>6567</td>
+                </tr>
+                <tr>
+                    <td>THIAGO BONFIN</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>XXXX</td>
+                </tr>
+                <tr>
+                    <td>GERENTE</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>XXXX</td>
+                </tr>
+                <tr>
+                    <td>SE ARARAQUARA</td>
+                    <td>(14) 3109-2237</td>
+                    <td>(14) 3109-2450</td>
+                    <td>2450</td>
+                </tr>
+                <tr>
+                    <td>SE ARARAQUARA 2</td>
+                    <td>(14) 3109-2450</td>
+                    <td>(14) 3109-2450</td>
+                    <td>2450</td>
+                </tr>
+                <tr>
+                    <td>SE BARIRI</td>
+                    <td>(14) 3109-2347</td>
+                    <td>(14) 3109-2347</td>
+                    <td>2347</td>
+                </tr>
+                <tr>
+                    <td>SE BARRA BONITA</td>
+                    <td>(14) 3109-2242</td>
+                    <td>(14) 3109-2514</td>
+                    <td>2242</td>
+                </tr>
+                <tr>
+                    <td>SE BAURU</td>
+                    <td>(14) 3109-2266</td>
+                    <td>(14) 3109-2312</td>
+                    <td>2266</td>
+                </tr>
+                <tr>
+                    <td>SE BORBOREMA</td>
+                    <td>(14) 3109-2970</td>
+                    <td>(14) 3109-2970</td>
+                    <td>2970</td>
+                </tr>
+                <tr>
+                    <td>SE BOTUCATU</td>
+                    <td>(14) 3109-2550</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>2550</td>
+                </tr>
+                <tr>
+                    <td>SE BRACELL</td>
+                    <td>(14) 3109-2266</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>2266</td>
+                </tr>
+                <tr>
+                    <td>SE GETULINA</td>
+                    <td>(14) 3109-2344</td>
+                    <td>(14) 3109-2345</td>
+                    <td>2344</td>
+                </tr>
+                <tr>
+                    <td>SE IBITINGA</td>
+                    <td>(14) 3109-2348</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>2348</td>
+                </tr>
+                <tr>
+                    <td>MO PROMISSÃO</td>
+                    <td>(14) 3109-2030</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>2030</td>
+                </tr>
+                <tr>
+                    <td>SE PENÁPOLIS</td>
+                    <td>(14) 3109-2840</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>2840</td>
+                </tr>
+                <tr>
+                    <td>SE PROMISSÃO</td>
+                    <td>(14) 3109-2346</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>2346</td>
+                </tr>
+                <tr>
+                    <td>SE SÃO CARLOS</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>(XX) XXXX-XXXX</td>
+                    <td>8750</td>
+                </tr>
+                <tr>
+                    <td>Service Desk</td>
+                    <td>0800 770 7955</td>
+                    <td>0800 770 7955</td>
+                    <td>7322</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+</div>
 
     <footer>
         © Julian Rocha Rosseto
     </footer>
 </body>
-</html>
-    

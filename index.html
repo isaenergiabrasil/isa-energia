@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SITES Isa Energia Brasil</title>
 
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <style>
         body {
             background-image: url('horizontal_pro.png');
@@ -20,7 +22,7 @@
             overflow-x: hidden;
             color: #fff;
         }
-        
+
         body::before {
             content: "";
             position: fixed;
@@ -41,7 +43,6 @@
          margin-top: 80px; /* empurra os botões para baixo */
 }
 
-
         /* COLUNA DA ESQUERDA (Agrupa os 5 cartões) */
         .setores-lateral {
             display: flex;
@@ -52,7 +53,7 @@
 
         /* BLOCO CENTRAL: Organiza o título e o cartão de telefones abaixo dele */
         .bloco-centro {
-            display: flex;
+             display: flex;
             flex-direction: column;
             align-items: center; /* Centraliza os elementos horizontalmente */
             gap: 40px; /* Espaço entre o subtítulo e o cartão de telefones */
@@ -81,7 +82,7 @@
 
         /* CONTAINER EXCLUSIVO DO CARTÃO DE TELEFONES NO CENTRO/DIREITA */
         .centro-direita-card {
-            width: 320px; /* Mantém o mesmo tamanho padrão de cartão dos outros */
+             width: 320px; /* Mantém o mesmo tamanho padrão de cartão dos outros */
             align-self: flex-end; /* Move o cartão especificamente para o lado direito da coluna central */
         }
 
@@ -199,6 +200,10 @@
     max-width: 600px;   /* expande para caber mais conteúdo */
 }
 
+.setor-titulo i {
+    color: red;
+    margin-right: 6px;
+}
 
         @media (max-width: 1100px) {
             .header {
@@ -236,6 +241,7 @@
                 background: rgba(255, 255, 255, 0.95);
             }
         }
+
     </style>
 
 </head>
@@ -321,8 +327,10 @@
         </div>
 
 <div class="setor-card">
-    <div class="setor-titulo">📞 Telefones Úteis</div>
-    <div class="setor-conteudo">
+<div class="setor-titulo">
+    <i class="fa-solid fa-phone" style="color:red;"></i> Telefones Úteis
+    </div>
+     <div class="setor-conteudo">
         <table class="tabela-telefones">
             <thead>
                 <tr>
